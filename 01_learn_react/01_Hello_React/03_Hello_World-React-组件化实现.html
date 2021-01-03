@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">Body</div>
+
+  <!--  引入React依赖 将远程文件中的错误显示到本地 如果有的话crossorign跨域脚本 -->
+  <script src="../react/react.development.js" ></script>
+  <script src="../react/react-dom.development.js"></script>
+  <script src="../react/babel.min.js"></script>
+
+
+  <!--  为了让react中jsx的代码被解析 必须在script标签中添加一个属性 text/babel -->
+  <!--  第一个参数只能有一个根标签 ，类似于template -->
+  <script type="text/babel">
+
+  class App extends React.Component {
+    constructor () {
+      super();
+      this.state = {
+        message: 'Hello World',
+        title: 'Head'
+      }
+    }
+
+    render () {
+      return (
+        <div>
+          <h1>{this.state.title}</h1>
+          <h2>{this.state.message}</h2>
+          <button onClick={this.btnClick.bind(this)}>Click me</button>
+        </div>
+      )
+    }
+
+    btnClick () {
+      this.setState({
+        message: 'Hello React',
+        title: 'Footer'
+      })
+
+      // set属性 更改值进行重新渲染页面执行render函数 在react内部执行
+      console.log(this);
+      console.log(123);
+    }
+  }
+  ReactDOM.render(<App/>, document.getElementById('app'));
+  </script>
+</body>
+</html>

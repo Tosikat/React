@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.nav-bar{
+  width: 100%;
+  height: 44px;
+  display: flex;
+  margin-bottom: 5px;
+}
+.slot-item{
+  text-align: center;
+  line-height: 44px;
+}
+.slot-left,.slot-right{
+  width: 60px;
+  background-color: red;
+}
+.slot-center{
+  flex: 1;
+  background-color: #3498db;
+}

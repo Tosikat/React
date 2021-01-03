@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="app"></div>
+  
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+  <script src="../react/babel.min.js"></script>
+  
+  <script type="text/babel">
+  
+  class App extends React.Component {
+    constructor () {
+    super();
+    this.state = {
+      count: 0
+    }
+  }
+  
+    render () {
+      return (
+        <div>
+          <h2>计数器： {this.state.count}</h2>
+          <button onClick={this.add.bind(this)}>+</button>
+          <button onClick={this.decrease.bind(this)}>-</button>
+        </div>
+      )
+    }
+
+    // react内部调用 需要手动绑定this 从不手动调用函数
+    add () {
+      console.log("+");
+      this.setState({
+        count: this.state.count + 1
+      })
+    }
+
+    decrease () {
+      console.log("-");
+      this.setState({
+        count: this.state.count - 1
+      })
+    }
+ 
+  }
+  ReactDOM.render(<App/>, document.getElementById("app"));
+  </script>
+</body>
+</html>

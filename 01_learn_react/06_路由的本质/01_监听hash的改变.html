@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h1>Router的监听</h1>
+<a href="#/home">主页</a>
+<a href="#/about">关于</a>
+
+<div id="route-view"></div>
+<script>
+  const context = document.getElementById('route-view');
+  window.addEventListener("hashchange", e => {
+    console.log("hashChange", location.hash)
+    switch (location.hash) {
+      case '#/home':
+        context.innerHTML = "首页";
+        break;
+      case '#/about':
+        context.innerHTML = "关于";
+        break;
+      default:
+        context.innerHTML = "404 Not found";
+        break;
+    }
+  })
+</script>
+</body>
+</html>

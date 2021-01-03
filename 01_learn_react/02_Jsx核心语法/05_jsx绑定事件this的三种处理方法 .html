@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app"></div>
+
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+  <script src="../react/babel.min.js"></script>
+
+  <script type="text/babel">
+
+  class App extends React.Component {
+    constructor () {
+    super();
+    this.state = {
+      message: 'Tosikat'
+    }
+  }
+
+    render () {
+      return (
+        <div>
+          <h1>{this.state.message}</h1>
+          {/*方案1-绑定this 利用bind函数*/}
+          <button style={{"margin": "10px"}} onClick={this.toName.bind(this)}>按钮1</button>
+
+          {/*方案2-利用箭头函数中this指向所在上下文的属性定义事件*/}
+          <button style={{"margin": "10px"}} onClick={this.toName1}>按钮2</button>
+
+          {/*方案3- 在绑定标签中写函数 推荐使用 传入参数方便*/}
+          <button style={{"margin": "10px"}} onClick={() =>{this.toName2('lijun')}}>按钮3</button>
+        </div>
+      )
+    }
+
+    toName () {
+      console.log(this.state.message);
+      console.log("第一种");
+    }
+
+    toName1 = () => {
+      console.log(this.state.message);
+      console.log("第二种");
+    }
+
+    toName2 (params) {
+      console.log(this.state.message+" "+params);
+      console.log("第三种");
+    }
+
+  }
+  ReactDOM.render(<App/>, document.getElementById("app"));
+  </script>
+</body>
+</html>

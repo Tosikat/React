@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="app"></div>
+  
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+  <script src="../react/babel.min.js"></script>
+  
+  <script type="text/babel">
+  
+  class App extends React.Component {
+    constructor () {
+    super();
+    this.state = {
+      isLogin: false
+    }
+  }
+  
+    render () {
+      //  适合逻辑代码非常多的判断
+      const {isLogin} = this.state;
+      const tipShow = isLogin ? "block" : "none"
+      
+      return (
+        <div>
+          <button onClick={() => this.toggleLogin() }>{isLogin ? "退出" : "登录"}</button>
+          <hr/>
+          <h2 style={{display: tipShow}}>你好 - Tosikat</h2>
+        </div>
+      )
+    }
+    toggleLogin () {
+      this.setState({
+        isLogin: !this.state.isLogin
+      })
+      console.log(this.state.isLogin);
+    }
+  }
+  ReactDOM.render(<App/>, document.getElementById("app"));
+  </script>
+</body>
+</html>

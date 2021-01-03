@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="app"></div>
+  
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+  <script src="../react/babel.min.js"></script>
+  
+  <script type="text/babel">
+  
+  class App extends React.Component {
+    constructor () {
+    super();
+    this.state = {
+      title: '编程语言',
+      movies: ['Python', 'C', 'Php', 'Java', 'Go', 'C#'],
+      counts: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      myObj: [
+        {
+          name: 'Lijun',
+          age: 22
+        },
+        {
+          name: 'Tosikat',
+          age: 12
+        },
+        {
+          name: '越长大越孤单',
+          age: 18
+        },
+        {
+          name: 'Tottoko',
+          age: 14
+        }, 
+        {
+          name: '李俊',
+          age: 16
+        }
+      ]
+    }
+  }
+  
+    render () {
+      const {title, movies, counts, myObj} = this.state;
+      return (
+        <div>
+          <h2>{title}</h2>
+          <ul>
+            {movies.map(item => <li>{item}</li>)}
+          </ul>
+          <hr/>
+
+          <h2>对象渲染</h2>
+          <ul>
+            {myObj.map(item => <li>{item.name}--{item.age}</li> )}
+          </ul>
+          <hr/>
+          <h2>原数组</h2>
+          <ul>
+            {counts.map(item => <li>{item}</li>)}
+          </ul>
+          <hr/>
+      
+          <h2>数组筛选（奇偶）</h2>
+          <ul>
+            {counts.filter((item, index) => index%2 !==0 ).map(item => <li>{item}</li>)}
+          </ul>
+          <hr/>
+          <h2>数组筛选（前四）</h2>
+          <ul>
+            {counts.slice(0, 4).map(item => {
+              return <li>{item}</li>
+            })}
+          </ul>
+        </div>
+      )
+    }
+  }
+  ReactDOM.render(<App/>, document.getElementById("app"));
+  </script>
+</body>
+</html>

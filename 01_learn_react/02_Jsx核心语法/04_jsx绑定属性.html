@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="app"></div>
+  
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+  <script src="../react/babel.min.js"></script>
+  
+  <script type="text/babel">
+  function setImgSize (imgUrl, size) {
+    return imgUrl + `?param=${size}+y+${size}`
+  }
+  
+  class App extends React.Component {
+    constructor () {
+    super();
+    this.state = {
+      title: '标题',
+      imgUrl: 'https://p1.music.126.net/DOZHRkXE1sZCM6mWCky5KQ==/109951165188090916.jpg?param=140y140',
+      imgUrl2: 'https://dss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3892521478,1695688217&fm=26&gp=0.jpg',
+      setImgUrl: 'https://p1.music.126.net/DOZHRkXE1sZCM6mWCky5KQ==/109951165188090916.jpg',
+      link: 'http://www.baidu.com',
+      active: false
+    }
+  }
+  
+    render () {
+      const {active} = this.state;
+      return (
+        <div>
+          {/*
+          <img src={setImgSize(this.state.imgUrl,120)} title={this.state.title} alt="" />*/}
+          <a href={this.state.link}>百度</a>
+          {/*绑定class react中某些关键字会被替换*/}
+          <div className="box title">div元素</div>
+          <div className={"box title " + (active?"active": "positive")}>active属性的div元素</div>
+          <label htmlFor="">标签</label>
+          {/*绑定style*/}
+          <h1 style={{"color": "red", fontSize: "40px"}}>增加css属性的元素</h1>
+        </div>
+      )
+    }
+  }
+  ReactDOM.render(<App/>, document.getElementById("app"));
+  </script>
+</body>
+</html>

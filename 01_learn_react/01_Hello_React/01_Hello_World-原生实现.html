@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1 id="text"></h1>
+  <button id="btn">Click me!</button>
+  
+  <script>
+    //  命令式编程 每一个操作都是给计算机一个命令
+
+    let message = 'Hello World';
+
+    const text = document.getElementById('text');
+    const btn = document.getElementById('btn');
+
+    text.innerHTML = message;
+
+    btn.addEventListener('click', () => {
+      text.innerHTML = 'Hello React'
+    })
+  </script>
+</body>
+</html>
